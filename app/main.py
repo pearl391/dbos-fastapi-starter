@@ -1,6 +1,10 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+
 app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to FastAPI Starter"}
 
 from dbos import DBOS
 import random
