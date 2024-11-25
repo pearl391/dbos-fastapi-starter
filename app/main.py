@@ -745,11 +745,10 @@ def main():
 
     interval_giftbox = 3600
     interval_offline = 7200
-         
-         
- 
+    
+    # Set default value for auto upgrade level
+    selector_upgrade = 'n'  # Default to 'n' instead of asking for input
 
-    selector_upgrade = input("Auto Upgrade level y/n  : ").strip().lower()
     while True:
         for index, query in enumerate(queries):
             parse = parse_query(query)
@@ -766,7 +765,6 @@ def main():
                         data = datalogin.get('data')
                         tokendata = data.get('token')
                         token = tokendata
-                        # save(user.get('id'), token)
                         print_("Refresh Token")
                     else:
                         print_(f"{datalogin.get('message')}")
@@ -784,6 +782,7 @@ def main():
                     level = levelInfo.get('level')
                     print_(f"-- Username : {username} | Level : {rankName} - {level} | Balance : {currentAmount}")
 
+            
             #Daily Mission
             daily = get_daily(token, useragent)
             if daily is not None:
